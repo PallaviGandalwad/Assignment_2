@@ -1,0 +1,118 @@
+body{
+
+	margin:0;
+	padding:0;
+	font-family:sans-serif;
+	background: url(1.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.container
+{
+	position:absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50% ,-50%);/*at the middle position
+	*/
+	width:600px;
+	background:#fff;/*white background of 450 width*/
+	padding: 45px;/*45 size padding at top bottum left right*/
+
+	box-sizing:border-box;/*get the small and with borderbox format */
+	border:1px solid rgba(0,0,0,.1);/*slightly donesmall border box*/
+	box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.container h1
+{
+	text-align: center;/*REGITER get at center position*/
+	margin:0,0,40px;
+	padding:0;
+	color:rgb(66,133,244);/*blue color to REGISTER*/
+	letter-spacing:2px; /*letter spacing in REGISTER word*/
+
+}
+.container input
+{
+	padding:5px;/*padding the size of input textfield is incresed by 5px*/
+	margin-bottom:30px;/*large space in input textfield button*/
+	width: 50%;/*width line of textfield*/
+	box-sizing: border-box;/*correct box sizing format*/
+	box-shadow: none;
+	outline:none;
+	border:none;/*removed the border lines of textfield*/
+	border-bottom:2px solid #999;/*solid b line at bottom in textfield*/
+
+}
+.container input[type="submit"]   /*tis is the input type="submit" replacement */
+{
+	border-radius: 20px;
+	height: 40px;
+	cursor:pointer;
+	background: rgb(66,133,244);/*background color blue of submit button */
+	color:#fff;/*white color of Register word*/
+	margin-bottom: 0;
+}
+
+.container input[type="submit"]:hover/*all text goes upper side i.e First Name*/
+{
+	background:#f7497d; /*Register submit btton pink color wile we click*/
+
+}
+.container form div
+{
+	position: relative;
+}
+.container form div label
+{
+	position:absolute;
+	top:3px;
+	pointer-events: none;/*pointer goes on proper textfield*/
+	left:0;
+}
+.container input:focus ~label,/*attribute selector*/
+.container input:valid ~label
+{
+	left:0;
+	top:-20px;/*text labels get at top side*/
+	color: rgb(66,133,244);
+	font-size: 12px;
+	font-weight: bold;/*font is bold i.e First Name*/
+
+}
+.container input:focus ,/*attribute selector*/
+.container input:valid 
+{
+	border-bottom: 2px solid rgb(66,133,244);
+}
+
+#fname_error_message
+{
+	color: red;
+}
+
+#sname_error_message
+{
+	color: red;
+}
+#email_error_message
+{
+	color:red;
+}
+#password_error_message
+{
+	color:red;
+}
+#retype_password_error_message
+{
+	color:red;
+}
+
+
+
+
+
+
+
+
+

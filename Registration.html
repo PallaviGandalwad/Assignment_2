@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name ="viewport" content="width=device-width , initial-scale=1.0"> 
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">  
+	<title>registaration form</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>STUDENT REGISTRATION FORM</h1>
+		<form id="registration_form">
+			<div>
+				<input type="text" id="form_fname"   name="" required="">
+
+				<span class="error_form" id="fname_error_message"></span>
+
+				<label>
+					First Name
+				</label>
+			</div>
+
+			<div>
+				<input type="text" id="form_sname" name="" required="">
+
+				<span class="error_form" id="sname_error_message"></span>
+
+				<label>
+					Second Name
+				</label>
+			</div>
+
+			<div>
+				<input type="email" id="form_email" name="" required="">
+
+				<span class="error_form" id="email_error_message"></span>
+
+				<label>
+					Email id
+				</label>
+			</div>
+
+			<div>
+				<input type="password" id="form_password" name="" required="">
+
+				<span class="error_form" id="password_error_message"></span>
+
+				<label>
+					Password
+				</label>
+			</div>
+
+			<div>
+				<input type="password" id="form_retype_password" name="" required="">
+				<span class="error_form" id="retype_password_error_message"></span>
+				<label>
+					Re-Enter Password
+				</label>
+			</div>
+
+			<input type="submit" value="Register" name="">
+
+			 
+		</form>
+	</div>
+
+
+
+<script type="text/javascript">
+	$(function(){
+
+		$("#fname_error_message").hide();/*here we hide the span id msg at beginning in jquery*/
+		$("#sname_error_message").hide();
+		$("#email_error_message").hide();
+		$("#password_error_message").hide();
+		$("#retype_password_error_message").hide();
+
+		var error_fname=false;
+		var error_sname=false;
+		var error_email=false;
+		var error_password=false;
+		var error_retype_password=false;
+
+		$("#error_fname").focusout(function(){/*performing t action of focusout()& im calling a function check_fname()in this fun whc will trigger when t input field losses its focus*/
+			check_fname();
+		});
+
+		$("#error_sname").focusout(function()
+		{
+			check_sname();
+		});
+
+		$("#error_email").focusout(function()
+		{
+			check_email();
+		});
+
+		$("#error_password").focusout(function()
+		{
+			check_password();
+		});
+
+		$("#error_retype_password").focusout(function()
+		{
+			check_retype_password();
+		});
+
+		function check_fname()
+		{
+			var pattern = /^[a-zA-Z]*$/;
+			var fname = $("#form_fname").val();  /*storing the value whre user inter into textbox*/
+
+			if(pattern.test(fname) &&  fname !== '')
+			{
+				$("#fname_error_message").hide();
+				$("#form_fname").css("border-bottom","2px solid #34F458");  /*green color*/
+			}
+			else
+			{
+				$("#fname_error_message").html("Should contain only Characters");
+				$("#fname_error_message").show();
+				$("#form_fname").css("border-bottom","2px solid #F90A0A");  /*red color*/
+				error_fname = true;
+			}
+		}
+
+		function check_sname()
+		{
+			var pattern = /^[a-zA-Z]*$/;
+			var sname = $("#form_sname").val();/*storing the value whre user inter into textbox*/
+
+			if(pattern.test(sname) &&  sname !== '')
+			{
+				$("#sname_error_message").hide();
+				$("#form_sname").css("border-bottom","2px solid #34F458");  /*green color*/
+			}
+			else
+			{
+				$("#sname_error_message").html("Should contain only Characters");
+				$("#sname_error_message").show();
+				$("#form_sname").css("border-bottom","2px solid #F90A0A");/*red color*/
+				error_sname=true;
+			}
+		}
+		function check_password()
+		{
+			var password_length = $("#form_password").val().length;
+			if(password_length < 4)
+			{
+				$("#password_error_message").html("atlest 4 Characters");
+				$("#password_error_message").show();
+				$("#form_password").css("border-bottom","2px solid #F90A0A");
+				error_password=true;
+
+			}
+			else
+			{
+				$("#password_error_message").hide();
+				$("#form_password").css("border-bottom","2px solid #34F458");
+
+			}
+		}
+		function check_retype_password()
+		{
+			var password= $("#form_password").val();
+			var retype_password=$("#form_retype_password").val();
+			if(password !== retype_password)
+			{
+				$("#retype_password_error_message").html("password did not match");
+				$("#retype_password_error_message").show();
+
+				$("#form_retype_password").css("border-bottom","2px solid #F90A0A");
+				retype_password_error_message=true;
+			}
+			else
+			{
+				$("#retype_password_error_message").hide();
+				$("#form_retype_password").css("border-bottom","2px solid #34F458");
+			}
+		}
+
+
+
+		function check_email()
+		{
+			var pattern= /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+			var email = $("#form_email").val();
+
+			if(pattern.test(email) && email !== '')
+			{
+				$("#email_error_message").hide();
+				$("#form_email").css("border-bottom","2px solid #34F458");
+			}
+			else
+			{
+				$("#email_error_message").html("Invalid Email");
+				$("#email_error_message").show();
+				$("#form_email").css("border-bottom","2px solid #F90A0A");
+				error_email=true;
+			}
+		}
+
+		$("#registration_form").submit(function()
+		{
+			error_fname=false;
+			error_sname=false;
+			error_email=false;
+			error_password=false;
+			error_retype_password=false;
+
+			check_fname();
+			check_sname();
+			check_email();
+			check_password();
+			check_retype_password();
+
+			if(error_fname === false && error_sname=== false && error_email === false && error_password ===false && error_retype_password === false)
+			{
+				alert("Registration Successfuly");
+				return true;
+			}
+			else
+			{
+				alert("please fill the form correctly");
+				return false;
+
+			}
+
+
+		});
+
+
+	});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
